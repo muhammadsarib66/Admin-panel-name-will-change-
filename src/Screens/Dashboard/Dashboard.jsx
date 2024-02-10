@@ -1,3 +1,4 @@
+import { useState } from "react";
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -16,21 +17,27 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import SearchIcon from "@mui/icons-material/Search";
 import userLogo from "../../assets/images/userLogo.png";
 import Menu from "../../assets/icons/Menu";
 import NotifiOff from "../../assets/icons/notficationOff.svg";
-import NotifiOn from "../../assets/icons/notificationOn.svg";
 import { Avatar, InputBase, Paper } from "@mui/material";
-import { wrap } from "framer-motion";
+import { color, wrap } from "framer-motion";
 import { Route, Routes } from "react-router";
 import UsersChart from "../../components/UsersChart";
 import DashboardContent from "../../components/DashboardContent";
-import Users from '../../assets/icons/users.svg'
-import settings from '../../assets/icons/Setting.svg'
-import logout from '../../assets/icons/Logout.svg'
+import Users from '../Users'
+import ServiceProviders from '../ServiceProvider'
+import Bookings from '../Bookings';
+import DashboardLogo from "../../assets/icons/DashboardLogo";
+import User from "../../assets/icons/User";
+import ServiceProvider from "../../assets/icons/ServiceProvider";
+import BookLogo from "../../assets/icons/BookLogo";
+import Settings from '../../assets/icons/Settings'
+
+import CustomerSupportLogo from "../../assets/icons/CustomerSupportLogo";
+import Logout from "../../assets/icons/Logout";
+import { Link } from "react-router-dom";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -101,25 +108,48 @@ const Drawer = styled(MuiDrawer, {
 export default function Dashboard() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [actInd, setActInd] = useState(0);
 
-  const  NavLinks = [
+  const NavLinks = [
     {
-      title : 'Users',
-      icon : Users,
+      title: "Dasbboard",
+      icon: DashboardLogo,
+      link: "/",
     },
     {
-      title : 'Settings',
-      icon : settings,
+      title: "Users",
+      icon: User,
+      link: "/users",
     },
     {
-      title : 'Booking',
-      icon : settings,
+      title: "ServiceProvider",
+      icon: ServiceProvider,
+      link: "/serviceprovider",
     },
     {
-      title : 'Logout',
-      icon : logout,
-    }
-  ]
+      title: "Bookings",
+      icon: BookLogo,
+      link : '/bookings'
+    },
+    {
+      title: "Customer Support",
+      icon: CustomerSupportLogo,
+      link : '/customersupport'
+    },
+    {
+      title: "Settings",
+      icon: Settings,
+      link : '/settings'
+    },
+    {
+      title: "Logout",
+      icon: Logout,
+      link : '/logout'
+    },
+  ];
+  const handleTabClick = (index) => {
+    setActInd(index);
+  };
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -151,7 +181,7 @@ export default function Dashboard() {
           </IconButton>
           <div className="flex items-center  w-full  justify-between">
             <Typography variant="h6" flexWrap={wrap} component="div">
-              Admin Panel
+              ARMA Panel
             </Typography>
             <Paper
               component="form"
@@ -205,43 +235,18 @@ export default function Dashboard() {
         </DrawerHeader>
         <Divider />
         <List>
-          {NavLinks.map(
-            (item, index) => (
-              <ListItem key={item.title} disablePadding sx={{ display: "block" }}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <img src={item.icon} alt={item.title} />
-                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                  </ListItemIcon>
-                  <ListItemText primary={item.title} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-            )
-          )}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+          {NavLinks.map((item, index) => (
+            <ListItem key={item.title} disablePadding sx={{ display: "block" }}>
+              <Link to={item.link}>
               <ListItemButton
+                onClick={() => handleTabClick(index)}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
               >
+
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
@@ -249,21 +254,36 @@ export default function Dashboard() {
                     justifyContent: "center",
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+
+                  <item.icon fill={actInd === index && "orange"} />
+               
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText
+                  primary={item.title}
+                  sx={{
+                    color: `${actInd === index ? "orange" : "grey"}`,
+                    opacity: open ? 1 : 0,
+                  }}
+                />
+
               </ListItemButton>
+                </Link>
             </ListItem>
           ))}
         </List>
+        <Divider />
+       
       </Drawer>
-      <div className="bg-[#f3f3f3] h-full w-full pt-20 flex px-10">
-        <div className="w-[80%]">
+      <div className="bg-[#f3f3f3] h-full w-full pt-20 px-4 grid grid-cols-4 gap-4" >
+        <div className="col-span-3 px-10">
           <Routes>
-            <Route path="/" element={<DashboardContent/>} />
+            <Route path="/" element={<DashboardContent />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/serviceprovider" element={<ServiceProviders />} />
+            <Route path="/bookings" element={<Bookings />} />
           </Routes>
         </div>
-        <div className="flex  flex-col gap-4">
+        <div className=" flex  flex-col gap-4">
           <UsersChart />
           <UsersChart />
         </div>
