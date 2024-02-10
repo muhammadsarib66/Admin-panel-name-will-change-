@@ -116,8 +116,8 @@ const index = () => {
                 Bookings
               </h1>
               <div>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
-                  Add Booking
+                <button className="bg-blue-600  text-white px-4 py-2 rounded-lg">
+                  Add Booking 
                 </button>
               </div>
             </div>
