@@ -16,6 +16,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { useState } from 'react';
+import { TableHead } from '@mui/material';
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -116,8 +117,20 @@ export default function MyTable() {
   };
 
   return (
+    <>
+    <h1 className=' py-4 text-2xl font-bold'>
+      Users Details
+    </h1>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+        <TableHead>
+          <TableRow >
+            <TableCell  >Name</TableCell>
+            <TableCell align="right">Calories</TableCell>
+            <TableCell align="right">Fat&nbsp;(g)</TableCell>
+          </TableRow>
+
+        </TableHead>
         <TableBody>
           {(rowsPerPage > 0
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -163,5 +176,7 @@ export default function MyTable() {
         </TableFooter>
       </Table>
     </TableContainer>
+    </>
+
   );
 }

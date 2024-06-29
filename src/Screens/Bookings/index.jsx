@@ -1,130 +1,196 @@
 import React from "react";
-
+import user1Img from '../../assets/images/user1.png' 
+import user2Img from '../../assets/images/user2.png' 
 const index = () => {
-  const BookingMainTags = [
+  const UserTitles = ["Profile", "Phone", "City", "State", "country", "Action"];
+  const people = [
     {
-      title: "Earning ",
-      value: "Rs 1000",
-      color: "bg-green-500",
-      icon: <i class="fa-solid fa-dollar-sign"></i>,
+      name: "Jane Cooper",
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      role: "Admin",
+      email: "jane.cooper@example.com",
+      image: user1Img,
     },
     {
-      title: "Total Bookings",
-      value: "10",
-      icon: <i class="fa-solid fa-calendar-check"></i>,
-      color: "bg-blue-500",
-    },
-    {
-      title: "Total Customers",
-      value: "10",
-      icon: <i class="fa-solid fa-users"></i>,
-      color: "bg-yellow-500",
-    },
-    {
-      title: "Total Service Providers",
-      value: "10",
-      icon: <i class="fa-solid fa-user"></i>,
-      color: "bg-red-500",
-    },
-  ];
+      name: "John Doe",
+      title: "03103102166",
 
-  const BookingTable = [
-    {
-      name: "Aliya ",
-      id: 1,
-      email: "alia@gmail.com",
-      phone: "03100000000",
-      service: "Cleaning",
-      serviceProvider: "Ahmed",
-      date: "12-12-2021",
-      time: "12:00 PM",
-      status: "Pending",
+      role: "Tester",
+      email: "john.doe@example.com",
+      image: user2Img,
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      name: "aliya"
     },
     {
-      name: "Aliya ",
-      id: 1,
-      email: "alia@gmail.com",
-      phone: "03100000000",
-      service: "Cleaning",
-      serviceProvider: "Ahmed",
-      date: "12-12-2021",
-      time: "12:00 PM",
-      status: "Pending",
+      name: "Jane Cooper",
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      role: "Admin",
+      email: "jane.cooper@example.com",
+      image: user1Img,
     },
     {
-      name: "Aliya ",
-      id: 1,
-      email: "alia@gmail.com",
-      phone: "03100000000",
-      service: "Cleaning",
-      serviceProvider: "Ahmed",
-      date: "12-12-2021",
-      time: "12:00 PM",
-      status: "Pending",
+      name: "Jane Cooper",
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      role: "Admin",
+      email: "jane.cooper@example.com",
+      image: user1Img,
     },
     {
-      name: "Aliya ",
-      id: 1,
-      email: "alia@gmail.com",
-      phone: "03100000000",
-      service: "Cleaning",
-      serviceProvider: "Ahmed",
-      date: "12-12-2021",
-      time: "12:00 PM",
-      status: "Pending",
+      name: "Jane Cooper",
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      role: "Admin",
+      email: "jane.cooper@example.com",
+      image: user1Img,
     },
     {
-      name: "Aliya ",
-      id: 1,
-      email: "alia@gmail.com",
-      phone: "03100000000",
-      service: "Cleaning",
-      serviceProvider: "Ahmed",
-      date: "12-12-2021",
-      time: "12:00 PM",
-      status: "Pending",
+      name: "Jane Cooper",
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      role: "Admin",
+      email: "jane.cooper@example.com",
+      image: user1Img,
     },
+    {
+      name: "Jane Cooper",
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      role: "Admin",
+      email: "jane.cooper@example.com",
+      image: user1Img,
+    },
+    {
+      name: "Jane Cooper",
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      role: "Admin",
+      email: "jane.cooper@example.com",
+      image: user1Img,
+    },
+    {
+      name: "Jane Cooper",
+      title: "03103102166",
+      city: "Hyderabad",
+      state: "Sindh",
+      country: "Pakistan",
+      role: "Admin",
+      email: "jane.cooper@example.com",
+      image: user1Img,
+    },
+    {
+      name: "Veronica Lodge",
+      title: "03103102166",
+
+      role: " Software Engineer",
+      email: "veronica.lodge@example.com",
+      image: "https://bit.ly/3vaOTe1",
+    },
+    // More people...
   ];
   return (
-    <section>
-      <div>
-        <h1 className="h2 font-bold capitalize text-gray-700 py-4">
-          Booking Management
-        </h1>
-        <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {BookingMainTags.map((tag, index) => (
-              <div
-                key={index}
-                className={` shadow-lg rounded-lg p-4  ${tag.color}`}
-              >
-                <div className="flex justify-center">
-                  <div className="text-white text-2xl">{tag.icon}</div>
-                </div>
-                <div className="text-center mt-4">
-                  <p className="text-xl text-white font-semibold">
-                    {tag.title}
-                  </p>
-                  <p className="text-white mt-2">{tag.value}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div>
-            <div className="flex justify-between items-center">
-              <h1 className="h2 font-bold capitalize text-gray-700 py-4">
-                Bookings
-              </h1>
-              <div>
-                <button className="bg-blue-600  text-white px-4 py-2 rounded-lg">
-                  Add Booking 
-                </button>
-              </div>
+    <div>
+      <h1 className="h2 font-bold capitalize text-gray-700 py-4">
+        Bookings
+      </h1>
+      <div className="flex flex-col  ">
+        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="py-2  align-middle inline-block min-w-full  sm:px-6 lg:px-8">
+            <div className="   shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              <table className=" min-w-full    divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    {UserTitles.map((title, index) => {
+                      return (
+                        <th
+                          key={index}
+                          scope="col"
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          {title}
+                        </th>
+                      );
+                    })}
+    
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y   divide-gray-200">
+                  {people.map((person) => (
+                    <tr key={person.email}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 h-10 w-10">
+                            <img
+                              className="h-10 w-10 rounded-full"
+                              src={person.image}
+                              alt=""
+                            />
+                          </div>
+                          <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900">
+                              {person.name}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {person.email}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">
+                          {person.title}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {person.department}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span
+                          className="px-2 inline-flex text-xs leading-5
+                          font-semibold rounded-full bg-green-100 text-green-800"
+                        >
+                          {person.city}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {person.state}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {person.country}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                        <a href="#" className="text-red-600 hover:text-red-900">
+                          <i class="fa-solid fa-trash"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

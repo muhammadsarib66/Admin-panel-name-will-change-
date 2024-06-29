@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import user1Img from '../../assets/images/user1.png' 
 import user2Img from '../../assets/images/user2.png' 
 const index = () => {
-  let peopleData = [
+  const UserTitles = ["Profile", "Phone", "City", "State", "country", "Action"];
+  const people = [
     {
       name: "Jane Cooper",
       title: "03103102166",
@@ -14,11 +15,11 @@ const index = () => {
       image: user1Img,
     },
     {
-      name: "doE",
-      title: "03103102122",
+      name: "John Doe",
+      title: "03103102166",
 
       role: "Tester",
-      email: "john.doe@example1.com",
+      email: "john.doe@example.com",
       image: user2Img,
       title: "03103102166",
       city: "Hyderabad",
@@ -33,7 +34,7 @@ const index = () => {
       state: "Sindh",
       country: "Pakistan",
       role: "Admin",
-      email: "jane.cooper@example2.com",
+      email: "jane.cooper@example.com",
       image: user1Img,
     },
     {
@@ -43,7 +44,7 @@ const index = () => {
       state: "Sindh",
       country: "Pakistan",
       role: "Admin",
-      email: "jane.cooper@example3.com",
+      email: "jane.cooper@example.com",
       image: user1Img,
     },
     {
@@ -53,7 +54,7 @@ const index = () => {
       state: "Sindh",
       country: "Pakistan",
       role: "Admin",
-      email: "jane.cooper@example4.com",
+      email: "jane.cooper@example.com",
       image: user1Img,
     },
     {
@@ -66,19 +67,10 @@ const index = () => {
     },
     // More people...
   ];
-   const [people , setPeople] = useState(peopleData)
-  const UserTitles = ["Profile", "Phone", "City", "State", "country", "Action"];
-  const handleDelete = (item) => {
-    console.log(item);
-     const deleteItem =  people.filter((person) => person.email !== item);
-    setPeople(deleteItem)
-    
-};
-
   return (
     <div>
       <h1 className="h2 font-bold capitalize text-gray-700 py-4">
-        Users Management
+        Event Managers
       </h1>
       <div className="flex flex-col ">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -102,7 +94,7 @@ const index = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {people?.map((person) => (
+                  {people.map((person) => (
                     <tr key={person.email}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
@@ -145,7 +137,7 @@ const index = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {person.country}
                       </td>
-                      <td onClick={()=>handleDelete(person.email)} className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                      <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                         <a href="#" className="text-red-600 hover:text-red-900">
                           <i class="fa-solid fa-trash"></i>
                         </a>

@@ -29,6 +29,7 @@ import DashboardContent from "../../components/DashboardContent";
 import Users from '../Users'
 import ServiceProviders from '../ServiceProvider'
 import Bookings from '../Bookings';
+import EventManger from "../EventManager"
 import DashboardLogo from "../../assets/icons/DashboardLogo";
 import User from "../../assets/icons/User";
 import ServiceProvider from "../../assets/icons/ServiceProvider";
@@ -122,25 +123,25 @@ export default function Dashboard() {
       link: "/users",
     },
     {
-      title: "ServiceProvider",
-      icon: ServiceProvider,
-      link: "/serviceprovider",
+      title: "Event Managers",
+      icon: CustomerSupportLogo,
+      link : '/eventmanager'
     },
+    // {
+    //   title: "ServiceProvider",
+    //   icon: ServiceProvider,
+    //   link: "/serviceprovider",
+    // },
     {
       title: "Bookings",
       icon: BookLogo,
       link : '/bookings'
     },
-    {
-      title: "Customer Support",
-      icon: CustomerSupportLogo,
-      link : '/customersupport'
-    },
-    {
-      title: "Settings",
-      icon: Settings,
-      link : '/settings'
-    },
+    // {
+    //   title: "Settings",
+    //   icon: Settings,
+    //   link : '/settings'
+    // },
     {
       title: "Logout",
       icon: Logout,
@@ -181,7 +182,7 @@ export default function Dashboard() {
           </IconButton>
           <div className="flex items-center  w-full  justify-between">
             <Typography variant="h6" flexWrap={wrap} component="div">
-              ARMA Panel
+              AARMA Admin Panel
             </Typography>
             <Paper
               component="form"
@@ -189,7 +190,7 @@ export default function Dashboard() {
             >
               <InputBase
                 className="w-96"
-                sx={{ ml: 1, flex: 1 }}
+                sx={{ ml: 2, flex: 1 }}
                 placeholder="Search..."
                 inputProps={{ "aria-label": "search anything" }}
               />
@@ -220,7 +221,7 @@ export default function Dashboard() {
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <div className="flex justify-between items-center  w-full ">
-            <p>Admin Panel</p>
+            <p>AARMA Panel</p>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon />
@@ -241,7 +242,7 @@ export default function Dashboard() {
               <ListItemButton
                 onClick={() => handleTabClick(index)}
                 sx={{
-                  minHeight: 48,
+                  minHeight: 66,
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
@@ -274,19 +275,20 @@ export default function Dashboard() {
         <Divider />
        
       </Drawer>
-      <div className="bg-[#f3f3f3] h-full w-full pt-20 px-4 grid grid-cols-4 gap-4" >
-        <div className="col-span-3 px-10">
+      <div className="bg-[#f3f3f3] h-full w-full pt-20 px-4  grid grid-cols-4 gap-4" >
+        <div className=" col-span-4  px-2 md:px-10">
           <Routes>
             <Route path="/" element={<DashboardContent />} />
             <Route path="/users" element={<Users />} />
-            <Route path="/serviceprovider" element={<ServiceProviders />} />
+            <Route path="/eventmanager" element={<EventManger />} />
             <Route path="/bookings" element={<Bookings />} />
+            <Route path="/serviceprovider" element={<ServiceProviders />} />
           </Routes>
         </div>
-        <div className=" flex  flex-col gap-4">
+        {/* <div className=" md:flex  hidden  flex-col gap-4">
           <UsersChart />
           <UsersChart />
-        </div>
+        </div> */}
       </div>
     </Box>
   );
